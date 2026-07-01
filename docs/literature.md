@@ -22,3 +22,15 @@ Selected for the **Fine Matcher** phase. Once the coarse region is identified, w
 
 ### Why a Unified RGB + Thermal Pipeline?
 Research shows that models like DINOv2, trained extensively on diverse RGB data, extract structural and semantic features that generalize surprisingly well to thermal imagery when properly preprocessed. Maintaining a single pipeline guarantees that architectural optimizations benefit both domains simultaneously, reducing maintenance overhead and providing a clean ablation baseline for future modality-specific research.
+
+## Implementation Priorities
+With the architecture now complete, the implementation of concrete models will follow this strict order to construct the `CoarseToFineEngine`:
+1. DINOv2
+2. Global Similarity
+3. Heatmap
+4. Candidate Localization
+5. ALIKED
+6. LightGlue
+7. RANSAC
+8. Metrics
+9. Jetson

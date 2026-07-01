@@ -22,9 +22,13 @@ This document logs all major architectural design decisions.
 - **Decision**: The core `benchmark/` folder contains only interfaces and orchestration logic.
 - **Motivation**: Separates the "what" (benchmarking) from the "how" (neural networks).
 
-## Framework-Independent Interfaces
+## Orchestrator-Only Engine
+- **Decision**: The `BenchmarkRunner` solely orchestrates data flow. It has no algorithmic or mathematical logic of its own.
+- **Motivation**: Enforces absolute separation between dataset looping, metric calculation, and the computer vision matching steps.
+
+## Framework-Independent Abstractions
 - **Decision**: PyTorch, TensorFlow, OpenCV, etc., cannot be imported in the abstract base classes.
-- **Motivation**: Ensures the benchmark isn't locked into one ML ecosystem.
+- **Motivation**: Ensures the benchmark isn't locked into one ML ecosystem and algorithms from different frameworks can be compared cleanly.
 
 ## Unified RGB + Thermal Pipeline
 - **Decision**: Both modalities use the exact same matching pipeline and weights.

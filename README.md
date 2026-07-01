@@ -43,14 +43,24 @@ Project/
 **Completed:**
 - Validation dataset loader & CVAT XML parser
 - Dataset data models & Prediction models
-- Benchmark runner & Metrics interface
+- Benchmark runner & Metrics placeholder
 - MatchingEngine abstraction
 - Coarse-to-Fine engine architecture
-- FeatureExtractor, CoarseLocalizer, FineMatcher abstractions
+- FeatureExtractor abstraction
+- CoarseLocalizer abstraction
+- FineMatcher abstraction
+- GeometricVerifier abstraction
 - Dummy engine for pipeline verification
+- Dependency Injection & Strategy Pattern architecture
+- Frozen data contracts
 
-**In Progress / Next Task:**
-- GeometricVerifier abstraction (Only abstraction, no implementation yet)
+**In Progress:**
+- Implementing concrete computer vision algorithms.
+
+**Next Step:**
+- Implement `DINOv2FeatureExtractor`.
+
+*Note: The entire benchmark pipeline architecture is now finished. Implementation moves completely into actual computer vision algorithms.*
 
 ## Pipeline Overview
 

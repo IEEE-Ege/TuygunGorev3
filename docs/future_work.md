@@ -1,23 +1,25 @@
 # Future Work
 
-This document serves as the prioritized implementation backlog for the project.
+This document serves as the prioritized implementation backlog for the project. Since the core architecture and all abstract interfaces are fully complete, focus shifts entirely to concrete computer vision implementations.
 
-## Remaining Modules (High Priority)
-1. **GeometricVerifier Abstraction**: Finalize interface.
-2. **DINOv2 Feature Extractor**: Wrap DINOv2 to output dense features.
+## Remaining Modules (Strict Priority Order)
+1. **DINOv2 Feature Extractor**: Wrap DINOv2 to output dense features from both RGB and Thermal modalities (Highest Priority).
+2. **Global Similarity Matching**: Implement semantic comparison logic.
 3. **Coarse Heatmap Localizer**: Convert global features into bounding box candidates.
-4. **ALIKED & LightGlue Integration**: Implement the FineMatcher.
-5. **RANSAC Geometric Verification**: Implement OpenCV based homography/fundamental matrix estimation.
-6. **Metrics Integration**: Implement IoU, Precision, Recall calculations.
+4. **ALIKED Keypoint Detector**: Implement the fine feature extractor.
+5. **LightGlue Integration**: Implement the FineMatcher.
+6. **RANSAC Geometric Verification**: Implement OpenCV based homography/fundamental matrix estimation to refine the bounding box.
+7. **Metrics Integration**: Implement IoU, Precision, Recall calculations.
+8. **RGB + Thermal Validation**: Benchmark unified pipeline performance.
+9. **Jetson Optimization**: Apply TensorRT/INT8 quantization for deployment.
 
-## Research Tasks (Medium Priority)
-- Investigate the impact of various thermal preprocessing techniques (e.g., histogram equalization, pseudocolor) on DINOv2 zero-shot performance.
+## Research Tasks
+- Investigate the impact of various thermal preprocessing techniques (e.g., histogram equalization, pseudocolor) on DINOv2 zero-shot performance within the unified pipeline.
 - Evaluate LoFTR vs. LightGlue in the FineMatcher stage on thermal sequences.
 
 ## Optimization Tasks
-- Profile the `CoarseToFineEngine` latency.
+- Profile the `CoarseToFineEngine` latency once concrete models are active.
 - Export DINOv2 and LightGlue to ONNX.
-- Apply INT8 quantization and TensorRT calibration for the Jetson platform.
 
 ## Deployment Tasks
 - Develop a TCP/UDP client for live video stream ingestion.

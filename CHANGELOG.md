@@ -8,13 +8,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Upcoming Work
-- Implement GeometricVerifier abstraction.
-- Integrate DINOv2 Feature Extractor.
+- Implement DINOv2 Feature Extractor.
 - Implement Coarse Heatmap Localization.
 - Integrate ALIKED + LightGlue Matcher.
 - Implement OpenCV RANSAC Verification.
 - Add IoU / Precision / Recall metrics.
+- RGB + Thermal Validation.
+- Jetson Optimization.
 - End-to-end benchmark evaluation.
+
+## [0.2.0] - 2026-07-01
+
+### Completed Work
+- **Added** `GeometricVerifier` abstraction.
+- **Added** Complete `CoarseToFineEngine` architecture skeleton integrating all components.
+- **Added** Full suite of pipeline interfaces: `FeatureExtractor`, `CoarseLocalizer`, `FineMatcher`, and `GeometricVerifier`.
+- **Architectural Update** Finalized Dependency Injection and Strategy Pattern integration for a completely modular architecture.
 
 ## [0.1.0] - 2026-06-27
 
@@ -26,9 +35,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Added** Prediction models for metrics.
 - **Added** `MatchingEngine` abstraction.
 - **Added** Metrics interface skeleton.
-- **Added** `CoarseToFineEngine` architecture skeleton.
-- **Added** `FeatureExtractor` abstraction.
-- **Added** `CoarseLocalizer` abstraction.
-- **Added** `FineMatcher` abstraction.
 - **Added** Dummy engine for pipeline verification.
 - **Changed** Reorganized documentation to standard structure.

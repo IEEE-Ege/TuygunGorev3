@@ -4,75 +4,73 @@ This file is the permanent shared memory between ChatGPT, Claude, Gemini, and fu
 
 ## Current Stage
 
-Architecture abstraction is mostly complete. Implementation phase is starting.
+Architecture is 100% complete. Implementation of concrete computer vision algorithms is starting.
 
-## Current Architecture
+## Current Architecture Status
 
-The architecture is built around a `BenchmarkRunner` that orchestrates `MatchingEngine` implementations. The targeted pipeline is a `CoarseToFineEngine` which utilizes abstractions for `FeatureExtractor`, `CoarseLocalizer`, `FineMatcher`, and `GeometricVerifier`.
+The core architecture (Strategy Pattern + Dependency Injection) is fully finalized. The `CoarseToFineEngine` orchestrates abstract components: `FeatureExtractor`, `CoarseLocalizer`, `FineMatcher`, and `GeometricVerifier`. Data models use frozen dataclasses to ensure immutability.
 
-## Completed Modules
+## Completed Components
 
-- Validation dataset loader
-- CVAT XML parser
-- Dataset data models
-- Benchmark runner
-- Prediction models
+- BenchmarkRunner
 - MatchingEngine abstraction
-- Metrics interface
-- Coarse-to-Fine engine architecture
+- Prediction models
+- Metrics placeholder
+- CoarseToFineEngine orchestration
 - FeatureExtractor abstraction
 - CoarseLocalizer abstraction
 - FineMatcher abstraction
-- Dummy engine for pipeline verification
-
-## Modules in Progress
-
 - GeometricVerifier abstraction
+- Dummy benchmark pipeline
+- Complete coarse-to-fine interface hierarchy
 
-## Next Implementation Target
+## Remaining Components
 
-Implement `GeometricVerifier` abstraction.
-**Constraint**: Only abstraction. No neural network code or implementation yet.
+- DINOv2 Feature Extractor
+- Global Similarity matching
+- Heatmap Generation
+- Candidate Localization
+- ALIKED Keypoint Detection
+- LightGlue Feature Matching
+- OpenCV RANSAC Geometric Verification
+- Metrics implementation
+- RGB + Thermal Validation
+- Jetson Optimization
 
-## Current Benchmark State
+## Current Implementation Status
 
-Dummy benchmark exists for verifying the pipeline flow. No real algorithms have been benchmarked yet.
+Dummy engines work. No real neural networks are hooked up yet. The next phase will implement real models targeting the abstract interfaces.
 
-## Important Architectural Decisions
+## Next Immediate Task
 
-- **Single Pipeline**: Both RGB and Thermal modalities are supported through a single unified pipeline. Separate pipelines are not allowed.
+Implement `DINOv2FeatureExtractor`.
+
+## Known Architectural Decisions
+
+- **Single Unified Pipeline**: The benchmark supports BOTH RGB and Thermal images using ONE unified pipeline. Separate RGB and Thermal models will NOT exist. The same engine must process both modalities. Future datasets will contain RGB references and Thermal references using the same directory structure.
 - **Framework Independence**: Core abstractions do not depend on ML frameworks.
-- **Strict Separation**: `BenchmarkRunner` only orchestrates; it does not match or evaluate.
+- **Orchestrator-Only Engine**: `BenchmarkRunner` only orchestrates; it does not match or evaluate.
 
-## Current Branch
+## Current Pipeline Status
 
-main (assumed)
+- Interfaces: Implemented and complete.
+- Concrete Implementations: Future/Pending.
 
-## Current Version
+## Repository Health
 
-v0.1.0 (architecture phase)
+- Architecture is clean, modular, and highly documented.
+- No duplicated documentation.
+- Validation dataset and XML parsing are functional.
 
-## Latest Commit
+## Recent Milestones
 
-[Requires Git Context]
-
-## Known Limitations
-
-- No concrete models integrated yet.
-- Metrics evaluation is only a skeleton.
-
-## Known Issues
-
-None currently reported.
+- Finished the entire architectural layout, including `GeometricVerifier` abstraction, finalizing the `CoarseToFineEngine` pipeline design.
 
 ## Future Milestones
 
-- DINOv2 Feature Extractor
-- Global Similarity
-- Heatmap Generation
-- Candidate Localization
-- ALIKED Local Feature Detector
-- LightGlue Feature Matcher
-- OpenCV RANSAC Geometric Verification
-- IoU / Precision / Recall Metrics
-- Jetson Optimization
+- Integrate DINOv2
+- Implement Global Similarity & Heatmap Candidate Localization
+- Integrate ALIKED & LightGlue
+- Implement RANSAC
+- Calculate Metrics
+- Jetson Deployment
